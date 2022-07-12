@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Section from "./components/Section";
+import { useState } from "react";
+import rates from "./assets/rates";
+
+// console.log("USD===>", rates.USD);
+// console.log("EUR===>", rates.EUR);
 
 function App() {
+  const [devise1, setdevise1] = useState(0);
+  const [devise2, setdevise2] = useState(0);
+  const transform = Object.entries(rates);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Section
+        currency1={devise1}
+        currency2={devise2}
+        setCurrency1={setdevise1}
+        setCurrency2={setdevise2}
+        change1={rates.EUR}
+        change2={rates.USD}
+        arrayRates={transform}
+      ></Section>
     </div>
   );
 }
